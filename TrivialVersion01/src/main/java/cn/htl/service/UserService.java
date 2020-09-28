@@ -31,7 +31,7 @@ public class UserService {
                     return -2;//账号或者密码出错
                 }
             } else {
-                return -3;//已激活
+                return -3;//未激活
             }
         }
     }
