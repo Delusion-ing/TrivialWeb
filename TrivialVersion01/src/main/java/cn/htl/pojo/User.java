@@ -12,8 +12,24 @@ public class User {
     private String sex;
     private String telephone;
     private String email;
-    private char status;
+    private String status;
     private String code;
+
+    public User() {
+    }
+
+    public User(int uid, String username, String password, Date birthday, String name, String sex, String telephone, String email, String status, String code) {
+        this.uid = uid;
+        this.username = username;
+        this.password = password;
+        this.birthday = birthday;
+        this.name = name;
+        this.sex = sex;
+        this.telephone = telephone;
+        this.email = email;
+        this.status = status;
+        this.code = code;
+    }
 
     public int getUid() {
         return uid;
@@ -79,11 +95,11 @@ public class User {
         this.email = email;
     }
 
-    public char getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(char status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

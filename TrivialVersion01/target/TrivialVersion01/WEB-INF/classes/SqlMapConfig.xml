@@ -6,6 +6,9 @@
 
 <!--dtd是对xml配置标签与属性的约束-->
 <configuration>
+    <typeAliases>
+        <package name="cn.htl.pojo"/>
+    </typeAliases>
     <!--    environments环境  开发环境，生产环境-->
     <environments default="development">
         <environment id="development">

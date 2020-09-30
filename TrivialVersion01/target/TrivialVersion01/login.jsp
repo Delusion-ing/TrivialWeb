@@ -5,7 +5,7 @@
   Time: 15:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"  isELIgnored="false" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,6 @@
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!--导入angularJS文件-->
-    <script src="js/angular.min.js"></script>
     <!--导入jquery-->
     <script src="js/jquery-3.3.1.js"></script>
     <script type="text/javascript" >
@@ -73,20 +72,21 @@
                 if(checkUserName()&&checkPassword()){
                     var un = $("#username").val()
                     var pw = $("#password").val()
+                    var check = $("#check").val()
                     //alert(un+pw)
                     //写提交
                     $.ajax({
                         url:"loginServlet",
                         async:true,
-                        data:"username="+un+"&password="+pw,
+                        data:$("#loginForm").serialize(),
                         type:"post",
                         dataType:"json",
                         success:function (data) {
                            // alert(data)  {"code":1,"data":"登录成功"}
                             if(1 == data.code){
-                                //跳转到主页 index.html
+                                //跳转到主页 index.jsp
                                 $("#errorMsg").html("");
-                                window.location="index.html"
+                                window.location="index.jsp"
                             }else{
                                 //显示在界面上
                                 $("#errorMsg").html(data.data);
@@ -110,7 +110,7 @@
 <body>
 <!--引入头部-->
 <div id="header">
-
+        <%@include file="header.jsp"%>
 </div>
 <!-- 头部 end -->
 <section id="login_wrap">
@@ -131,12 +131,12 @@
                 <input id="username" name="username" type="text" placeholder="请输入账号" autocomplete="off">
                 <input id="password" name="password" type="text" placeholder="请输入密码" autocomplete="off">
                 <div class="verify">
-                    <input name="check" type="text" placeholder="请输入验证码" autocomplete="off">
-                    <span><img src="checkCode" alt="" onclick="changeCheckCode(this)"></span>
+                    <input  id="check" name="check" type="text" placeholder="请输入验证码" autocomplete="off">
+                    <span><img src="${pageContext.request.contextPath}/checkCode" alt="" onclick="changeCheckCode(this)"></span>
                     <script type="text/javascript">
                         //图片点击事件
                         function changeCheckCode(img) {
-                            img.src="checkCode?"+new Date().getTime();
+                            img.src="${pageContext.request.contextPath}/checkCode?"+new Date().getTime();
                         }
                     </script>
                 </div>
@@ -155,13 +155,13 @@
 </section>
 <!--引入尾部-->
 <div id="footer">
-
+    <%@include file="footer.jsp"%>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.0.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 <!--导入布局js，共享header和footer-->
-<script type="text/javascript" src="js/include.js"></script>
+<%--<script type="text/javascript" src="js/include.js"></script>--%>
 </body>
 </html>

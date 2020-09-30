@@ -1,5 +1,6 @@
 package cn.htl.util;
 
+import cn.htl.dao.UserDao;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -63,5 +64,9 @@ public class MySessionUtils2 {
             //所以要删除
             map.remove();
         }
+    }
+
+    public static <T> T getMapper(Class clz) {
+        return (T) getSession().getMapper(clz);
     }
 }

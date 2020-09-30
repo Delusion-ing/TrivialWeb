@@ -3,7 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.htl.dao.UserDao">
-    <select id="findByName" parameterType="string" resultType="cn.htl.pojo.User">
+    <select id="findByName" parameterType="string" resultType="user">
         select * from tab_user where username = #{username}
     </select>
+    <insert id="save" parameterType="user">
+        insert into tab_user values (null,#{username},
+        #{password},#{name},#{birthday},#{sex},#{telephone},#{email},#{status},#{code})
+    </insert>
+    <update id="updateStatus" parameterType="string" >
+        update tab_user set status ='Y' where code = #{code};
+    </update>
 </mapper>
