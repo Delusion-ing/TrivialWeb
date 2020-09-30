@@ -4,7 +4,6 @@ import cn.htl.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cn.htl.pojo.ResponseInfo;
 import cn.htl.pojo.User;
-import cn.htl.service.UserService;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;

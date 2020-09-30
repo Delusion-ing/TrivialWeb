@@ -94,7 +94,7 @@
             <p>USER REGISTER</p>
         </div>
         <div class="rg_form_center">
-            <div id="errorMsg" style="color:red;font-size: 22px" ></div>
+            <div id="errorMsg" class="alert alert-danger" ></div>
             <!--注册表单-->
             <form id="registerForm">
 

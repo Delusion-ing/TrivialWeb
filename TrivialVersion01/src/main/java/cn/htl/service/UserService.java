@@ -44,34 +44,34 @@ public class UserService {
         }
     }
 
-//    public int register(User user) {
-//        UserDao userDao = MySessionUtils2.getMapper(UserDao.class);
-//        //判断 用户的账号是否存在
-//        User user2 = userDao.findByUserName(user.getUsername());
-//        //不存在，调用保存 返回 1
-//        if(user2 == null){
-//            user.setStatus("N");//未激活
-//            String activeCode = UuidUtil.getUuid();
-//            user.setCode(activeCode);//激活
-//            userDao.save(user);
-//            MySessionUtils2.commitAndClose();
-//
-//            //参1 收件人
-//            //参2 内容
-//            //参3 标题
-//            MailUtils.sendMail(user.getEmail(),"<a href='http://localhost:8080/lvyou_war_exploded/activeServlet?activeCode="+activeCode+"'>点击激活途牛旅游账户</a>","激活账户");
-//            return 1;
-//        }else{
-//            //存在，返回-1
-//            return -1;
-//        }
-//
-//    }
-//
-//    public int active(String activeCode) {
-//        UserDao userDao = MySessionUtils2.getMapper(UserDao.class);
-//        int code =  userDao.updateStatus(activeCode); //1 表示成功
-//        MySessionUtils2.commitAndClose();
-//        return code;
-//    }
+    public int register(User user) {
+        UserDao userDao = MySessionUtils2.getMapper(UserDao.class);
+        //判断 用户的账号是否存在
+        User user2 = userDao.findByName(user.getUsername());
+        //不存在，调用保存 返回 1
+        if(user2 == null){
+            user.setStatus("N");//未激活
+            String activeCode = UuidUtil.getUuid();
+            user.setCode(activeCode);//激活
+            userDao.save(user);
+            MySessionUtils2.commitAndClose();
+
+            //参1 收件人
+            //参2 内容
+            //参3 标题
+            MailUtils.sendMail(user.getEmail(),"<a href='http://localhost:8080/TrivialVersion01_war_exploded/activeServlet?activeCode="+activeCode+"'>点击激活途牛旅游账户</a>","激活账户");
+            return 1;
+        }else{
+            //存在，返回-1
+            return -1;
+        }
+
+    }
+
+    public int active(String activeCode) {
+        UserDao userDao = MySessionUtils2.getMapper(UserDao.class);
+        int code =  userDao.updateStatus(activeCode); //1 表示成功
+        MySessionUtils2.commitAndClose();
+        return code;
+    }
 }
