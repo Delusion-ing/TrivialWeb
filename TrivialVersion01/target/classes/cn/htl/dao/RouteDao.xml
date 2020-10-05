@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.htl.dao.RouteDao">
+<!--    int findCountPageName(String keyword); -->
+<!--    List<Route> findPageByName(String keyword, int start, int pageSize);-->
+
+    <select id="findCountPageName" parameterType="string" resultType="int">
+        select count(*) from tab_route where rname like #{keyword};
+    </select>
+    <select id="findPageByName" resultType="Route">
+        select * from tab_route where rname like #{arg0} limit #{arg1},#{arg2};
+    </select>
+</mapper>

@@ -29,6 +29,7 @@
     <mappers>
         <mapper resource="cn/htl/dao/UserDao.xml"/>
         <mapper resource="cn/htl/dao/CategoryDao.xml"/>
+        <mapper resource="cn/htl/dao/RouteDao.xml"/>
     </mappers>
 
 
