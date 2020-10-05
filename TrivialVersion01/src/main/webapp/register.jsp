@@ -178,7 +178,7 @@
                         </td>
                         <td class="td_right check">
                             <input type="submit" class="submit" value="注册">
-                            <span id="msg" style="color: red;"></span>
+                            <span id="msg" style="color: #ff0000;"></span>
                         </td>
                     </tr>
                 </table>

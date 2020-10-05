@@ -59,7 +59,7 @@ public class UserService {
             //参1 收件人
             //参2 内容
             //参3 标题
-            MailUtils.sendMail(user.getEmail(),"<a href='http://localhost:8080/TrivialVersion01_war_exploded/activeServlet?activeCode="+activeCode+"'>点击激活途牛旅游账户</a>","激活账户");
+            MailUtils.sendMail(user.getEmail(),"<a href='http://192.168.3.14:8080/TrivialVersion01_war_exploded/activeServlet?activeCode="+activeCode+"'>点击开启麻豆之旅</a>","激活麻豆账户");
             return 1;
         }else{
             //存在，返回-1

@@ -26,14 +26,14 @@ public class TestUserService {
         int code = userService.login(user);
         System.out.println(code);
     }
-//    @Test
-//    public void test03(){
-//        UserService userService = new UserService();
-//        User user = new User(2, "htl123456", "htl123456", new Date(), "虎太郎", "男", "2222", "22222@qq.com", "N", "dddd");
-//        int code = userService.register(user);
-//
-//        System.out.println(code);
-//    }
+    @Test
+    public void test03(){
+        UserService userService = new UserService();
+        User user = new User(2, "htl123456", "htl123456", new Date(), "虎太郎", "男", "2222", "22222@qq.com", "N", "dddd");
+        int code = userService.register(user);
+
+        System.out.println(code);
+    }
 
 
 

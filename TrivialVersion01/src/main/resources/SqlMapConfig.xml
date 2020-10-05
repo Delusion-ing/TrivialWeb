@@ -28,6 +28,8 @@
     <!-- 配置多个映射文件-->
     <mappers>
         <mapper resource="cn/htl/dao/UserDao.xml"/>
+        <mapper resource="cn/htl/dao/CategoryDao.xml"/>
+        <mapper resource="cn/htl/dao/RouteDao.xml"/>
     </mappers>
 
 
