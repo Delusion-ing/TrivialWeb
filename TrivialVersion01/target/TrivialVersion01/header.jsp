@@ -17,7 +17,7 @@
             <%--            将session中的用户数据取出来 --%>
             <%--            判断用户对象是否为空  如果是提示请登录，否则显示用户信息--%>
             <c:if test="${user != null}">
-                <span>欢迎回来，${user.name}</span>
+                <span>"欢迎回来，${user.name}</span>
             </c:if>
             <c:if test="${user == null}">
                 <span>您未登录，请登录</span>
@@ -82,7 +82,7 @@
                     //循环所有的分类
                     for (var i = 0; i < list.length; i++) {
                         //在js中，使用引号号表示字符串，避免生成转译的\
-                        var li = '<li><a href="route_list.html">' + list[i].cname + '</a></li>'
+                        var li = '<li><a href="route_list.jsp?cid='+list[i].cid+'">' + list[i].cname + '</a></li>'
                         lis += li
                     }
 

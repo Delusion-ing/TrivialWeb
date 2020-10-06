@@ -34,4 +34,24 @@ public class RouteService {
         pb.setList(list);
         return pb;
     }
+
+    public PageBean findPageByCid(int cid, int currentPage, int pageSize) {
+        PageBean pb = new PageBean();
+        pb.setCurrentPage(currentPage);
+        pb.setPageSize(pageSize);
+        RouteDao routeDao = MySessionUtils2.getMapper(RouteDao.class);
+
+        int totalCount = routeDao.findCountById(cid);
+        pb.setTotalCount(totalCount);
+
+        int totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+        pb.setTotalPage(totalPage);
+
+        int start = (currentPage - 1) * pageSize;
+        List<Route> list = routeDao.findPageById(cid, start, pageSize);
+        pb.setList(list);
+        return pb;
+
+
+    }
 }

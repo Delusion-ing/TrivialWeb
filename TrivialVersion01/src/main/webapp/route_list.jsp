@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: wzx
+  Date: 2020/10/5
+  Time: 15:47
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="zh">
 <head>
@@ -9,7 +16,7 @@
     <link rel="stylesheet" href="css/search.css">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/getParameter.js"></script>
-    <script src="js/myfucntions.js"></script>
+    <script src="js/myonlyfunction.js"></script>
     <script type="text/javascript">
         //页面加载完成
         $(function () {

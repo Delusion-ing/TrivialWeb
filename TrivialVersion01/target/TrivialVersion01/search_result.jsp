@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: wzx
+  Date: 2020/10/5
+  Time: 15:47
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,7 +18,7 @@
     <script type="text/javascript">
         //页面加载完成
         $(function () {
-            //http://localhost:8080/TrivialVersion01_war_exploded/search_result.jsp?keyword=长沙
+            //http://localhost:8080/lvyou_war_exploded/search_result.jsp?keyword=长沙
             //location表示整个地址  location.search指 ?keyword=长沙
             //?keyword=%E9%95%BF%E6%B2%99  [?keyword,%E9%95%BF%E6%B2%99]
             var array = location.search.split('=')
@@ -24,7 +31,7 @@
         })
 
         function load( keyword, currentPage, pageSize) {
-            //http://localhost:8080/TrivialVersion01_war_exploded/routeServlet?keyword=%E9%95%BF%E6%B2%99&currentPage=1&pageSize=20
+            //http://localhost:8080/lvyou_war_exploded/routeServlet?keyword=%E9%95%BF%E6%B2%99&currentPage=1&pageSize=20
             $.get('routeServlet', {keyword: keyword, currentPage: currentPage, pageSize: pageSize},
                 function (data) {
                     if (data.code == 200) {
@@ -82,7 +89,30 @@
 
             lis += '<li class="threeword"><a href="javascript:load(\'' + keyword + '\',' + min + ',' + pageSize + ')">上一页</a></li>'
 
-            for (var i = 1; i <= pb.totalPage; i++) {
+            var start = 0
+            var end = 0
+            //判断当前的页数是否有10页
+            if (pb.totalPage < 10) {
+                start = 1;
+                end = pb.totalPage
+            }else{
+                //当前有10页
+                //如果当前页号是8 ，开始是3，结束是12
+                start = currentPage - 5;
+                end = currentPage + 4
+                //越界判断  start有可能出现小于，end有可能出现大于pb.totalPage
+                if(start < 1){
+                    start = 1;  //1
+                    end = start + 9; //10
+                }
+
+                if(end > pb.totalPage){
+                    end = pb.totalPage  //26
+                    start = end - 9 //17
+                }
+            }
+
+            for (var i = start; i <= end; i++) {
                 if (i == pb.currentPage) { //高亮
                     lis += ' <li class="curPage"><a href="javascript:load(\'' + keyword + '\',' + i + ',' + pageSize + ')">' + i + '</a></li>'
                 } else {
@@ -101,6 +131,9 @@
 
             //显示在pageNum
             $("#pageNum").html(lis)
+
+            //模仿百度，将页面滚动到顶部
+            window.scrollTo(0,0)
         }
     </script>
 </head>
